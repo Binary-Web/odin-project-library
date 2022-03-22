@@ -14,7 +14,7 @@ fieldset {
 .modal {
     height: 100vh;
     width: 100vw;
-    display: flex;
+    display: none;
     justify-content: center;
     position: fixed;
     z-index: 1;
@@ -23,10 +23,16 @@ fieldset {
     /* this will be a fall back */
     background-color: rgb(0,0,0,0.4);
 }
+
+.show {
+    display: flex;
+    transition: 1s ease;
+}
 .modal-content {
     background-color: beige;
     padding: 2rem;
     border-radius: 15px;
+    box-shadow: 0 1px 15px #000;
 }
 
 fieldset {
@@ -52,3 +58,51 @@ input[type="text"], input[type="number"] {
 }
 
 
+/* HEADER --------------------------- */
+.nav-header {
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    background-color: burlywood;
+    color: #fff;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.btn-modal{
+    display: block;
+    background-color: coral;
+    color: #fff;
+    width: 150px;
+    padding: 1rem;
+    font-size: 1rem;
+    border: none;
+    margin: 1rem auto;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px #000;
+    cursor: pointer;
+}
+
+.btn-modal:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease;
+}
+
+.btn-add-book {
+    background-color: coral;
+    color: #fff;
+    width: 150px;
+    padding: 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-add-book:hover {
+    background-color: rgb(243, 118, 73);
+    transition: 0.3s;
+}
