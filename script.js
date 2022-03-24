@@ -1,6 +1,7 @@
 let myLibrary = []
 
-function Book(title, author, numPage, isRead) {
+function Book(id, title, author, numPage, isRead) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.numPage = numPage;
@@ -8,7 +9,8 @@ function Book(title, author, numPage, isRead) {
 }
 
 function addBookToLibrary(book) {
-    myLibrary.push(book)
+    myLibrary.push(book);
+    console.log(myLibrary)
 }
 
 
@@ -16,7 +18,7 @@ const showModal = document.querySelector('.btn-modal');
 const modal = document.querySelector('.modal');
 const modalForm = document.querySelector('.modal-form');
 const addBook = document.querySelector('.btn-add-book');
-
+const cardContainer = document.querySelector('.card-container')
 
 showModal.addEventListener('click', () => {
     modal.style.display = "flex"
@@ -34,15 +36,53 @@ addBook.addEventListener('click', (e) => {
     const bookAuthor = document.querySelector("#bookAuthor").value;
     const bookNumPages = document.querySelector("#bookNumPages").value;
     const isRead = document.querySelector("#isRead").checked;
+    const bookId = myLibrary.length + 1;
     console.log(isRead)
-    const book = new Book(bookTitle, bookAuthor, bookNumPages, isRead);
-    addBookToLibrary(book)
+    const book = new Book(bookId, bookTitle, bookAuthor, bookNumPages, isRead);
+    modal.style.display = "none"
+    addBookToLibrary(book);
+    addCard();
+
 })
 
-console.log(Book)
+
 // I WILL COMEBACK TO THIS
 // window.addEventListener('keypress', (e) => {
 //     if(e.key === "Escape") {
 //         console.log
 //     }
 // })
+
+
+// making book cards
+const card = document.createElement("div");
+card.classList.add('book-card');
+
+function addCard(){
+    while (cardContainer.firstChild) {
+        cardContainer.removeChild(cardContainer.firstChild);
+    }
+
+    myLibrary.forEach((element) => {
+        const card = document.createElement("div");
+        card.classList.add('book-card');
+        card.innerHTML = `
+                <div class="card-div">    
+                    <span>Title: </span>
+                    <h4>${element.title}</h4>
+                </div>
+                <div class="card-div">
+                    <span>Author: </span>
+                    <span>${element.author}</span>
+                </div>
+                <div class="card-div">
+                    <span>Pages: </span>
+                    <span>${element.numPage}</span>
+                </div>
+                <div class="card-div">
+                    <span class="book-status ${element.isRead ? "" : "not-read"}">${element.isRead ? "Read" : "Not Read"}</span>
+                </div>
+        `;
+        cardContainer.append(card)
+    })
+}

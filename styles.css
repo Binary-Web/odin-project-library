@@ -9,6 +9,10 @@ fieldset {
     border: none;
 }
 
+
+body {
+    background-color: #FBFBF2;
+}
 /* MODAL----------------------------------------- */
 
 .modal {
@@ -29,10 +33,10 @@ fieldset {
     transition: 1s ease;
 }
 .modal-content {
-    background-color: beige;
+    background-color: #fff;
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 1px 15px #000;
+    box-shadow: 0 1px 15px rgb(0,0,0,0.4)
 }
 
 fieldset {
@@ -63,7 +67,7 @@ input[type="text"], input[type="number"] {
     padding: 1rem;
     text-align: center;
     width: 100%;
-    background-color: burlywood;
+    background-color: #847577;
     color: #fff;
 }
 
@@ -74,7 +78,7 @@ input[type="text"], input[type="number"] {
 
 .btn-modal{
     display: block;
-    background-color: coral;
+    background-color: #0F7173;
     color: #fff;
     width: 150px;
     padding: 1rem;
@@ -92,7 +96,7 @@ input[type="text"], input[type="number"] {
 }
 
 .btn-add-book {
-    background-color: coral;
+    background-color: #0F7173;
     color: #fff;
     width: 150px;
     padding: 1rem;
@@ -103,6 +107,50 @@ input[type="text"], input[type="number"] {
 }
 
 .btn-add-book:hover {
-    background-color: rgb(243, 118, 73);
+    background-color: #0b5758;
     transition: 0.3s;
+}
+
+/* BOOK CARD ======================= */
+.book-card {
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 1px 5px rgb(0,0,0, 0.4);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.book-card > * {
+    padding: 0.5rem;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    gap: 1.5rem;
+}
+
+
+.card-div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.card-div:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+
+.book-status {
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #DE541E;
+    width: 100%;
+    color: #fff;
+}
+.not-read {
+    background-color: rgb(189, 120, 120);
 }
