@@ -139,6 +139,10 @@ input[type="text"], input[type="number"] {
     padding: 1rem;
 }
 
+.card-div > * {
+    text-overflow: ellipsis;
+}
+
 .card-div:not(:last-child) {
     border-bottom: 1px solid #000;
 }
@@ -154,3 +158,4 @@ input[type="text"], input[type="number"] {
 .not-read {
     background-color: rgb(189, 120, 120);
 }
+

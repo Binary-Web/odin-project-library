@@ -18,7 +18,7 @@ const showModal = document.querySelector('.btn-modal');
 const modal = document.querySelector('.modal');
 const modalForm = document.querySelector('.modal-form');
 const addBook = document.querySelector('.btn-add-book');
-const cardContainer = document.querySelector('.card-container')
+const cardContainer = document.querySelector('.card-container');
 
 showModal.addEventListener('click', () => {
     modal.style.display = "flex"
@@ -59,13 +59,20 @@ const card = document.createElement("div");
 card.classList.add('book-card');
 
 function addCard(){
+
+
     while (cardContainer.firstChild) {
         cardContainer.removeChild(cardContainer.firstChild);
     }
 
-    myLibrary.forEach((element) => {
+    myLibrary.forEach((element, index) => {
         const card = document.createElement("div");
+        const bookStatus = document.createElement("div");
+        bookStatus.classList.add('book-status');
+        bookStatus.classList.add(`${element.isRead ? "read" : "not-read"}`)
+        bookStatus.innerHTML = `<span> ${element.isRead ? "Read" : "Not Read"}`
         card.classList.add('book-card');
+        card.setAttribute('key', element.id)
         card.innerHTML = `
                 <div class="card-div">    
                     <span>Title: </span>
@@ -79,10 +86,21 @@ function addCard(){
                     <span>Pages: </span>
                     <span>${element.numPage}</span>
                 </div>
-                <div class="card-div">
-                    <span class="book-status ${element.isRead ? "" : "not-read"}">${element.isRead ? "Read" : "Not Read"}</span>
-                </div>
         `;
+
+
+        //THIS UPDATES THE BOOK STATUS INTERNALLY
+        card.appendChild(bookStatus)
+        console.log(bookStatus)
+        bookStatus.addEventListener('click', () => {
+            const id = card.getAttribute('key');
+            const book = myLibrary.findIndex(x => x.id == id)
+            myLibrary[book] = !element.isRead;
+            console.log(myLibrary);
+        })
+
         cardContainer.append(card)
     })
 }
+
+
